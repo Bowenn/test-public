@@ -1,2 +1,2 @@
 # test-public
-Contains some test sample/work I tried, for understanding better.
+Contains some samples/works I tried, for programming better.
