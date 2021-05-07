@@ -22,7 +22,7 @@ int runHW(int argc, char** argv)
     glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE);
 
     /* window */
-    glutInitWindowSize(400, 300);
+    glutInitWindowSize(800, 600);
     glutCreateWindow("Hello World");
 
     /* callback */
