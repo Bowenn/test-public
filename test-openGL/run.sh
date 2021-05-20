@@ -1,5 +1,5 @@
 #! /bin/bash
 
-rm ./main
-make
+make clean
+make glfw
 ./main
