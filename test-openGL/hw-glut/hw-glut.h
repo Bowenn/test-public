@@ -1,4 +1,4 @@
-// hw-gl.h
+// hw-glut.h
 #include <stdio.h>
 #include <GL/glew.h>
 #ifdef __APPLE__

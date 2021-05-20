@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "*.swan": "html",
+        "glad.h": "c"
+    }
+}

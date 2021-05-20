@@ -1,5 +1,5 @@
-// hw-gl.c
-#include "hw-gl.h"
+// hw-glut.c
+#include "hw-glut.h"
 
 static const GLfloat g_vertex_buffer_data[] = { 
     -1.0f, -1.0f,

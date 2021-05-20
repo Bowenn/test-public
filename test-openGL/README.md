@@ -1,6 +1,4 @@
-# A small test program about openGL
-
-According to https://duriansoftware.com/joe/an-intro-to-modern-opengl.-table-of-contents.
+# A small learn/test program about openGL
 
 I study openGL on this.
 
@@ -24,6 +22,8 @@ Some static img file are placed here. After you change the relative path or name
 
 Some `.glsl` are placed here including source code of vertex shader and fragment shader.
 
-##### ./hw-gl/*
+##### ./hw-glutut/*
+
+According to https://duriansoftware.com/joe/an-intro-to-modern-opengl.-table-of-contents.
 
 You can find main code here.
