@@ -1,45 +1,48 @@
 const Router = require('@koa/router');
-const ERR = require('../config/error');
+const ERR = require('../config/error.config');
 
-class wrapRouter extends Router{
+class wrapRouter extends Router {
     constructor() {
         super();
     }
+
     get(...args) {
-        let middleware = args[args.length - 1];
+        const middleware = args[args.length - 1];
         args[args.length - 1] = (ctx, next) => {
             try {
                 middleware(ctx, next);
                 ctx.body = {
                     errno: 0,
                     errmsg: 'success',
-                    data: ctx.body
+                    data: ctx.body,
                 };
             }
             catch (e) {
+                console.log(e);
                 ctx.body = {
                     ...ERR[e.name || 'UNKNOWN'],
-                    data: e
+                    data: e.data,
                 };
             }
         };
         return super.get(...args);
     }
+
     post(...args) {
-        let middleware = args[args.length - 1];
+        const middleware = args[args.length - 1];
         args[args.length - 1] = (ctx, next) => {
             try {
                 middleware(ctx, next);
                 ctx.body = {
                     errno: 0,
                     errmsg: 'success',
-                    data: ctx.body
+                    data: ctx.body,
                 };
             }
             catch (e) {
                 ctx.body = {
                     ...ERR[e.name || 'UNKNOWN'],
-                    data: e
+                    data: e,
                 };
             }
         };

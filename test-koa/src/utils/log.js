@@ -3,11 +3,11 @@ const requestLog = ctx => {
     const info = [
         `[req-time: '${now}']`,
         `[path: '${ctx.path}']`,
-        `[ip: '${ctx.ip}']`
+        `[ip: '${ctx.ip}']`,
     ];
     console.log(info.join(';;'));
 };
 
 module.exports = {
-    requestLog
+    requestLog,
 };

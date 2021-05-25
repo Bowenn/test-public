@@ -5,8 +5,8 @@ const calcSign = (secret, data) => {
         .createHmac('sha256', secret)
         .update(data)
         .digest('hex');
-}
+};
 
 module.exports = {
-    calcSign
+    calcSign,
 };
