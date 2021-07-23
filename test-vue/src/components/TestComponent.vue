@@ -1,23 +1,18 @@
  <template>
- <div>
- </div>
+    <div></div>
 </template>
 
 <script>
-import {invokeSchemaByIframe} from '@baidu/eop-box';
+import { invokeSchemaByIframe } from "@baidu/eop-box";
 export default {
-    components: {
-    },
+    components: {},
     data() {
-        return {
-        };
+        return {};
     },
     created() {},
     computed: {},
-    mounted() {
-    },
-    methods: {
-    },
+    mounted() {},
+    methods: {},
 };
 </script>
 

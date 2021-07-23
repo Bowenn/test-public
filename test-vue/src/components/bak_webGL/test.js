@@ -24,13 +24,13 @@ function initShaderProgram(gl, vsSource, fsSource) {
         !gl.getProgramParameter(shaderProgram, gl.LINK_STATUS)
     ) {
         alert(
-            "Unable to initialize the shader program: " +
-            gl.getProgramInfoLog(shaderProgram)
+            'Unable to initialize the shader program: '
+            + gl.getProgramInfoLog(shaderProgram)
         );
         return null;
     }
 
-    let vertexColorAttribute = gl.getAttribLocation(shaderProgram, "aVertexColor")
+    let vertexColorAttribute = gl.getAttribLocation(shaderProgram, 'aVertexColor');
     gl.vertexAttribPointer(vertexColorAttribute, 4, gl.FLOAT, false, 0, 0);
     return shaderProgram;
 }
@@ -53,8 +53,8 @@ function loadShader(gl, type, source) {
 
     if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
         alert(
-            "An error occurred compiling the shaders: " +
-            gl.getShaderInfoLog(shader)
+            'An error occurred compiling the shaders: '
+            + gl.getShaderInfoLog(shader)
         );
         gl.deleteShader(shader);
         return null;
@@ -65,11 +65,11 @@ function loadShader(gl, type, source) {
 
 function initBuffers(gl) {
     const positionBuffer = gl.createBuffer();
-    var vertices = [
+    let vertices = [
         1.0, 1.0,
         -1.0, 1.0,
         1.0, -1.0,
-        -1.0, -1.0,
+        -1.0, -1.0
     ];
     gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
     gl.bufferData(gl.ARRAY_BUFFER,
@@ -77,13 +77,13 @@ function initBuffers(gl) {
         gl.STATIC_DRAW);
 
 
-    const colorBuffer = gl.createBuffer()
+    const colorBuffer = gl.createBuffer();
     const colors = [
         1.0, 1.0, 1.0, 1.0,
         1.0, 0.0, 0.0, 1.0,
         0.0, 0.0, 1.0, 1.0,
         0.0, 1.0, 0.0, 1.0
-    ]
+    ];
     gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
     gl.bufferData(gl.ARRAY_BUFFER,
         new Float32Array(colors),
@@ -91,7 +91,7 @@ function initBuffers(gl) {
 
     return {
         position: positionBuffer,
-        color: colorBuffer,
+        color: colorBuffer
     };
 
 
@@ -206,7 +206,7 @@ export function testWebGL(gl) {
     // 确认WebGL支持性
     if (!gl) {
         alert(
-            "无法初始化WebGL，你的浏览器、操作系统或硬件等可能不支持WebGL。"
+            '无法初始化WebGL，你的浏览器、操作系统或硬件等可能不支持WebGL。'
         );
         return;
     }
@@ -247,10 +247,10 @@ export function testWebGL(gl) {
         },
         uniformLocations: {
             projectionMatrix: gl.getUniformLocation(shaderProgram, 'uProjectionMatrix'),
-            modelViewMatrix: gl.getUniformLocation(shaderProgram, 'uModelViewMatrix'),
-        },
+            modelViewMatrix: gl.getUniformLocation(shaderProgram, 'uModelViewMatrix')
+        }
     };
 
-    drawScene(gl, programInfo, initBuffers(gl))
+    drawScene(gl, programInfo, initBuffers(gl));
 }
 
