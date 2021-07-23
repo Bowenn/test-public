@@ -1,4 +1,5 @@
-const Router = require('../../utils/router');
+const Router = require('../../class/router');
+const WrapError = require('../../class/error');
 const router = new Router();
 
 router
@@ -15,6 +16,11 @@ router
             data: 'test',
             errmsg: 'success',
         };
+    })
+    .all('/err', ctx => {
+        throw new WrapError({
+            name: 'UNKNOWN',
+        });
     });
 
 module.exports = router;

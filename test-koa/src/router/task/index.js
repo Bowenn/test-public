@@ -1,7 +1,7 @@
-const Router = require('../../utils/router');
+const Router = require('../../class/router');
 const Sign = require('./sign');
 const router = new Router();
-const WrapError = require('../../utils/error');
+const WrapError = require('../../class/error');
 
 router
     .get('/sign', ctx => {

@@ -14,5 +14,6 @@ module.exports = {
     },
     rules: {
         indent: ['error', 4],
+        '@babel/object-curly-spacing': ['off'],
     },
 };

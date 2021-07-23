@@ -1,7 +1,7 @@
 const ERR = {
     UNKNOWN: {
         errno: -1,
-        errmsg: 'server unknown err',
+        errmsg: 'unknown server err',
     },
     // 必要参数缺失
     ARGUMENT_MISSED: {
