@@ -1,27 +1,8 @@
-// interface typeA {
-//     a: String,
-//     b?: Number,
-//     c?: Array<Number>
-// }
-
-// let a: typeA = {
-//     a: 'qwe'
-// };
-
-// function myTest(x: typeA):Promise<typeA> {
-//     return Promise.resolve({
-//         a: x.a,
-//         b: 1,
-//         d: 2
-//     });
-// }
-
-// myTest(a).then(console.log);
-
+type Base = number | string | boolean;
 type Obj = Record<string, unknown>;
 type QueryOrigin = string | Record<string, QueryNode>;
 interface QueryNode extends Obj {
-    base: string | Obj
+    base: Base | Obj
     encodedTimes: number
     isJSON: boolean
     origin: QueryOrigin
@@ -30,8 +11,24 @@ interface QueryOptions extends Obj {
     useProxy?: boolean
 }
 
+function qStr2Obj (qStr: string): Obj {
+    return qStr.split('&').reduce(
+        (res: Obj, cur: string): Obj => {
+            try {
+                const [k, v]: string[] = cur.split('=');
+                res[k] = v;
+            }
+            catch (e) {
+                console.warn('Illegal query', cur, e);
+            }
+            return res;
+        },
+        {}
+    );
+}
+
 function parseQuery (
-    query: string | Obj,
+    query: unknown,
     options?: QueryOptions
 ): QueryNode {
     const node: QueryNode = {
@@ -76,6 +73,9 @@ function parseQuery (
     if (typeof query === 'string') {
         node.origin = query;
     }
+    else if (query instanceof Array) {
+        node.origin = `[${query.join(', ')}]`;
+    }
     else {
         node.origin = Object.keys(query).reduce(
             (res: Record<string, QueryNode>, key: string): Record<string, QueryNode> => {
@@ -87,3 +87,25 @@ function parseQuery (
     }
     return node;
 }
+
+class Query {
+    query: Obj
+    q: QueryNode
+    constructor(query: string | Obj, options?: QueryOptions) {
+        if (typeof query === 'string') {
+            this.query = qStr2Obj(query);
+        }
+        else if (typeof query === 'object') {
+            this.query = query;
+        }
+        else {
+            throw new Error('Illegal query: ' + query);
+        }
+        this.q = parseQuery(this.query, options);
+        console.log(this);
+    }
+}
+
+
+
+export default Query;

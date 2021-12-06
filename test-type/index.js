@@ -1,12 +1,11 @@
-var a = {
-    a: 'qwe'
-};
-function myTest(x) {
-    return Promise.resolve({
-        a: x.a,
-        b: 1,
-        d: 2
-    });
+function test(a) {
+    if (typeof a === 'string') {
+        return a;
+    }
+    else {
+        return Object.keys(a).reduce(function (res, key) {
+            return res + key + a[key];
+        }, '');
+    }
 }
-myTest(a).then(console.log);
 //# sourceMappingURL=index.js.map
