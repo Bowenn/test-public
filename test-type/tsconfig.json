@@ -8,6 +8,7 @@
         "sourceMap": true
     },
     "files": [
-        "index.ts"
+        "index.ts",
+        "query.ts"
     ]
 }
